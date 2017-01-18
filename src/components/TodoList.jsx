@@ -9,6 +9,7 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.showNewTaskInput = this.showNewTaskInput.bind(this);
+    this.hideNewTaskInput = this.hideNewTaskInput.bind(this);
     this.state = { isInProgress: false };
   }
 
@@ -16,12 +17,16 @@ class TodoList extends React.Component {
     this.setState({isInProgress: true});
   }
 
+  hideNewTaskInput() {
+    this.setState({isInProgress: false});
+  }
+
   render() {
     return (
       <Row>
         <Col span={8} offset={8}>
           { this.props.items.map(item => <TodoItem key={item.id} itemContent={item.content}></TodoItem>) }
-          { this.state.isInProgress ? <NewTaskInput /> : null }
+          { this.state.isInProgress ? <NewTaskInput cancelNewTask={this.hideNewTaskInput}/> : null }
           <AddButton onAddTaskButtonClick={this.showNewTaskInput}>Add New Task</AddButton>
         </Col>
       </Row>
