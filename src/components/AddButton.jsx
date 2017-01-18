@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 
 const ButtonWrapper = styled.div`text-align: center;`
 
@@ -9,9 +9,9 @@ const AddButton = ({onAddTaskButtonClick}) => {
     <Row type="flex" justify="start">
       <Col span={4} offset={10}>
         <ButtonWrapper>
-          <button type="button" className="ant-btn ant-btn-primary ant-btn-lg" onClick={onAddTaskButtonClick}>
+          <Button type="primary" size="large" onClick={onAddTaskButtonClick}>
             Add New Task
-          </button>
+          </Button>
         </ButtonWrapper>
       </Col>
     </Row>

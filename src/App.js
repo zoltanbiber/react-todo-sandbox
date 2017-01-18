@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AppHeader from './components/AppHeader';
 import TodoList from './components/TodoList';
-import AddButton from './components/AddButton';
 import './App.css';
 import 'antd/dist/antd.css'
 
@@ -17,7 +16,6 @@ class App extends Component {
       <div>
         <AppHeader>TODO LIST</AppHeader>
         <TodoList items={this.state.todoItems}/>
-        <AddButton onAddTaskButtonClick="f">Add New Task</AddButton> {/* on click set the is-in-progress state of the TodoList component to true*/}
       </div>
     );
   }
