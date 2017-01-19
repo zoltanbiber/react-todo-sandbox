@@ -21,7 +21,7 @@ class TodoList extends React.Component {
       <Row>
         <Col span={8} offset={8}>
           { this.props.items.map(item => <TodoItem key={item.id} itemContent={item.content}/>) }
-          { this.state.isInProgress ? <NewTaskInput cancelNewTask={this.hideNewTaskInput} saveNewTask={this.props.saveNewTask}/> : null }
+          { this.state.isInProgress ? <NewTaskInput hideNewTaskInput={this.hideNewTaskInput} saveNewTask={this.props.saveNewTask}/> : null }
           <AddButton onAddTaskButtonClick={this.showNewTaskInput}>Add New Task</AddButton>
         </Col>
       </Row>

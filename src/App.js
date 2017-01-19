@@ -8,8 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.saveNewTask = this.saveNewTask.bind(this);
-    this.state = { todoItems: [{id: 1, content: "First todo item."},
-                               {id: 2, content: "Second todo item."}]};
+    this.state = { todoItems: [{id: 1, content: "First todo item."}]};
   }
 
   saveNewTask(content) {

@@ -18,6 +18,7 @@ class NewTaskInput extends React.Component {
 
   handleClick() {
     this.props.saveNewTask(this.state.input);
+    this.props.hideNewTaskInput();
   };
 
   render() {
@@ -27,7 +28,7 @@ class NewTaskInput extends React.Component {
         <NewTaskButtons>
           <Row>
             <Col span={6}><Button type="primary" onClick={ this.handleClick }>Add Task</Button></Col>
-            <Col span={6}><Button type="dashed" onClick={ this.props.cancelNewTask }>Cancel</Button></Col>
+            <Col span={6}><Button type="dashed" onClick={ this.props.hideNewTaskInput }>Cancel</Button></Col>
           </Row>
         </NewTaskButtons>
       </div>
