@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AppHeader from './components/AppHeader';
-import TodoListContainer from './components/TodoList';
+import TodoList from './components/TodoList';
 import { showNewTaskInput, hideNewTaskInput, saveTodo } from './actions';
 import './App.css';
 import 'antd/dist/antd.css'
@@ -34,10 +34,10 @@ class App extends React.Component {
     return (
       <div>
         <AppHeader>TODO LIST</AppHeader>
-        <TodoListContainer  items={items} isInProgress={isInProgress}
-                            showNewTaskInput={this.showNewTaskInput}
-                            hideNewTaskInput={this.hideNewTaskInput}
-                            saveTodo={this.saveTodo}
+        <TodoList items={items} isInProgress={isInProgress}
+                  showNewTaskInput={this.showNewTaskInput}
+                  hideNewTaskInput={this.hideNewTaskInput}
+                  saveTodo={this.saveTodo}
         />
       </div>
     )
