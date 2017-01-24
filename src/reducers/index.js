@@ -13,7 +13,10 @@ const rootReducer = (state, action) => {
         isInProgress: false
       };
     case SAVE_TODO:
-      return state;
+      return {
+        ...state,
+        todoItems: state.todoItems.concat(action.todo)
+      };
     case TOGGLE_COMPLETED:
       return state;
     default: return state;
