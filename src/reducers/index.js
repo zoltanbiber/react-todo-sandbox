@@ -1,14 +1,15 @@
-import { ADD_TODO, SAVE_TODO, CANCEL_TODO, TOGGLE_COMPLETED } from '../actions';
+import { SHOW_NEW_TASK_INPUT, HIDE_NEW_TASK_INPUT, SAVE_TODO, TOGGLE_COMPLETED } from '../actions';
 
 const rootReducer = (state, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case SHOW_NEW_TASK_INPUT:
       return {
         ...state,
-        isInProgress: true};
-    case SAVE_TODO:
+        isInProgress: true
+      }
+    case HIDE_NEW_TASK_INPUT:
       return state;
-    case CANCEL_TODO:
+    case SAVE_TODO:
       return state;
     case TOGGLE_COMPLETED:
       return state;

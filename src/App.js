@@ -1,29 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import AppHeader from './components/AppHeader';
-import TodoList from './components/TodoList';
+import TodoListContainer from './components/TodoList';
+import { showNewTaskInput } from './actions';
 import './App.css';
 import 'antd/dist/antd.css'
 
-class App extends Component {
+
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.saveNewTask = this.saveNewTask.bind(this);
-    this.state = { todoItems: [{id: 1, content: "First todo item."}]};
+    this.showNewTaskInput = this.showNewTaskInput.bind(this);
+    // this.hideNewTaskInput = this.hideNewTaskInput.bind(this);
+    // this.saveNewTask = this.saveNewTask.bind(this);
   }
 
-  saveNewTask(content) {
-    var highestId = this.state.todoItems[this.state.todoItems.length - 1].id;
-    this.setState({ todoItems: this.state.todoItems.concat([{id: highestId + 1, content: content}])});
+  showNewTaskInput() {
+    this.props.dispatch(showNewTaskInput());
   }
 
   render() {
+    const { items, isInProgress, todoContent, todoDone, strikethrough } = this.props;
     return (
       <div>
         <AppHeader>TODO LIST</AppHeader>
-        <TodoList items={this.state.todoItems} saveNewTask={this.saveNewTask}/>
+        <TodoListContainer  items={items} isInProgress={isInProgress}
+                            todoContent={todoContent} todoDone={todoDone}
+                            strikethrough={strikethrough} showNewTaskInput={this.showNewTaskInput}
+        />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    items: state.todoItems,
+    isInProgress: state.isInProgress,
+    todoContent: state.input,
+    todoDone: state.done,
+    strikethrough: state.strikethrough
+  }
+}
+
+export default connect(mapStateToProps)(App);

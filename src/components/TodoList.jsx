@@ -5,28 +5,30 @@ import AddButton from './AddButton';
 import NewTaskInput from './NewTaskInput';
 
 
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.showNewTaskInput = this.showNewTaskInput.bind(this);
-    this.hideNewTaskInput = this.hideNewTaskInput.bind(this);
-    this.state = { isInProgress: false };
+class TodoListContainer extends React.Component {
+  // hideNewTaskInput() { this.setState({isInProgress: false}); }
+
+  saveNewTask(content) {
+    var highestId = this.state.todoItems[this.state.todoItems.length - 1].id;
+    this.setState({ todoItems: this.state.todoItems.concat([{id: highestId + 1, content: content}])});
   }
 
-  showNewTaskInput() { this.setState({isInProgress: true}); }
-  hideNewTaskInput() { this.setState({isInProgress: false}); }
-
   render() {
-    return (
-      <Row>
-        <Col span={8} offset={8}>
-          { this.props.items.map(item => <TodoItem key={item.id} itemContent={item.content}/>) }
-          { this.state.isInProgress ? <NewTaskInput hideNewTaskInput={this.hideNewTaskInput} saveNewTask={this.props.saveNewTask}/> : null }
-          <AddButton onAddTaskButtonClick={this.showNewTaskInput}>Add New Task</AddButton>
-        </Col>
-      </Row>
-    );
+    return <TodoList  items={this.props.items} saveNewTask={this.saveNewTask}
+                      showNewTaskInput={this.props.showNewTaskInput} isInProgress={this.props.isInProgress}/>;
   }
 }
 
-export default TodoList;
+const TodoList = ({ items, isInProgress, showNewTaskInput }) => {
+  return (
+    <Row>
+      <Col span={8} offset={8}>
+        { items.map(item => <TodoItem key={item.id} itemContent={item.content}/>) }
+        { isInProgress ? <NewTaskInput/> : null }
+        <AddButton onAddTaskButtonClick={showNewTaskInput}>Add New Task</AddButton>
+      </Col>
+    </Row>
+  )
+};
+
+export default TodoListContainer;
