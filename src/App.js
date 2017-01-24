@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AppHeader from './components/AppHeader';
 import TodoList from './components/TodoList';
+import { Link } from 'react-router';
+import { Button, Icon } from 'antd';
 import { showNewTaskInput, hideNewTaskInput, saveTodo } from './actions';
 import './App.css';
 import 'antd/dist/antd.css'
@@ -33,6 +35,9 @@ class App extends React.Component {
     const { items, isInProgress } = this.props;
     return (
       <div>
+        <Link to={`/about`}>
+          <Button>About The Author <Icon type="right" /></Button>
+        </Link>
         <AppHeader>TODO LIST</AppHeader>
         <TodoList items={items} isInProgress={isInProgress}
                   showNewTaskInput={this.showNewTaskInput}
