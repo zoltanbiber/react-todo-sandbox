@@ -15,16 +15,18 @@ class TodoListContainer extends React.Component {
 
   render() {
     return <TodoList  items={this.props.items} saveNewTask={this.saveNewTask}
-                      showNewTaskInput={this.props.showNewTaskInput} isInProgress={this.props.isInProgress}/>;
+                      showNewTaskInput={this.props.showNewTaskInput} isInProgress={this.props.isInProgress}
+                      hideNewTaskInput={this.props.hideNewTaskInput}
+           />;
   }
 }
 
-const TodoList = ({ items, isInProgress, showNewTaskInput }) => {
+const TodoList = ({ items, isInProgress, showNewTaskInput, hideNewTaskInput }) => {
   return (
     <Row>
       <Col span={8} offset={8}>
         { items.map(item => <TodoItem key={item.id} itemContent={item.content}/>) }
-        { isInProgress ? <NewTaskInput/> : null }
+        { isInProgress ? <NewTaskInput hideNewTaskInput={hideNewTaskInput}/> : null }
         <AddButton onAddTaskButtonClick={showNewTaskInput}>Add New Task</AddButton>
       </Col>
     </Row>

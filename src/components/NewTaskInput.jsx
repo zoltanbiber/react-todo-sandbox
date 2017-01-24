@@ -7,9 +7,9 @@ const NewTaskButtons = styled.div`padding: 10px 0px;`
 class NewTaskInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { input: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    // this.state = { input: '' };
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(e) {

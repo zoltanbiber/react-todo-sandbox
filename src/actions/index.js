@@ -10,6 +10,11 @@ export const showNewTaskInput = () => ({
   isInProgress: true
 });
 
+export const hideNewTaskInput = () => ({
+  type: HIDE_NEW_TASK_INPUT,
+  isInProgress: false
+});
+
 // let nextTodoId = 1;
 
 // export const saveTodo = (text) => ({

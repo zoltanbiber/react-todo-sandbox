@@ -8,7 +8,10 @@ const rootReducer = (state, action) => {
         isInProgress: true
       }
     case HIDE_NEW_TASK_INPUT:
-      return state;
+      return {
+        ...state,
+        isInProgress: false
+      };
     case SAVE_TODO:
       return state;
     case TOGGLE_COMPLETED:
