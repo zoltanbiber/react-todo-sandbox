@@ -30,14 +30,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { items, isInProgress, todoContent, todoDone, strikethrough } = this.props;
+    const { items, isInProgress } = this.props;
     return (
       <div>
         <AppHeader>TODO LIST</AppHeader>
         <TodoListContainer  items={items} isInProgress={isInProgress}
-                            todoContent={todoContent} todoDone={todoDone}
-                            strikethrough={strikethrough} showNewTaskInput={this.showNewTaskInput}
-                            hideNewTaskInput={this.hideNewTaskInput} saveTodo={this.saveTodo}
+                            showNewTaskInput={this.showNewTaskInput}
+                            hideNewTaskInput={this.hideNewTaskInput}
+                            saveTodo={this.saveTodo}
         />
       </div>
     )
@@ -48,9 +48,6 @@ const mapStateToProps = (state) => {
   return {
     items: state.todoItems,
     isInProgress: state.isInProgress,
-    todoContent: state.input,
-    todoDone: state.done,
-    strikethrough: state.strikethrough
   }
 }
 

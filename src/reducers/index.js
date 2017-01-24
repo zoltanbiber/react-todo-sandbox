@@ -1,4 +1,4 @@
-import { SHOW_NEW_TASK_INPUT, HIDE_NEW_TASK_INPUT, SAVE_TODO, TOGGLE_COMPLETED } from '../actions';
+import { SHOW_NEW_TASK_INPUT, HIDE_NEW_TASK_INPUT, SAVE_TODO } from '../actions';
 
 const rootReducer = (state, action) => {
   switch (action.type) {
@@ -17,8 +17,6 @@ const rootReducer = (state, action) => {
         ...state,
         todoItems: state.todoItems.concat(action.todo)
       };
-    case TOGGLE_COMPLETED:
-      return state;
     default: return state;
   }
 };
